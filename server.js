@@ -2,6 +2,8 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+const port = process.env.PORT || 3000; // this variable is for the dinamic port in heroku
+
 var app = express();
 
 hbs.registerPartials(__dirname + '/views/partials'); // when i added the partials, to launch nodemon I write nodemon server.js -e js,hbs i don't know exactly why but it can have render problems
@@ -62,6 +64,6 @@ app.get('/bad', (req,res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log('Server is up in port 3000');
+app.listen(port, () => {
+  console.log(`Server is up in port ${port}`);
 }); // in app.listen ew can use only 1 arguent or 2 like in this example
